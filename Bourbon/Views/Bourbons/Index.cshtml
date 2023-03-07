@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Bourbon.Models;
+
+<h1>Bourbon</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No bourbon added yet!</h3>
+}
+
+@foreach (Bourbon bourbon in Model)
+{
+  <li>@bourbon.Name</li>
+}

@@ -1,9 +1,8 @@
-namespace Bourbon.Models
+namespace Bourbon.Models;
+
+public class Juice
 {
-  public class Juice
-  {
-    public int JuiceId { get; set; }
-    public string Name { get; set; }
-    public string Rules { get; set; }
-  }
+  public int JuiceId { get; set; }
+  public string Name { get; set; }
+  public string Rules { get; set; }
 }
