@@ -19,5 +19,18 @@ namespace Bourbon.AddControllers
       List<Bourbon> model = _db.Items.ToList();
       return View(model);
     }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Bourbon bourbon)
+    {
+      _db.Bourbons.Add(bourbon);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
