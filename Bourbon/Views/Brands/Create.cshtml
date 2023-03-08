@@ -1,0 +1,16 @@
+@{
+    Layout = "_Layout";
+}
+
+@model ConnorBourbon.Models.Brand
+
+<h4>Add a new Brand</h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+    @Html.LabelFor(model => model.Distillery)
+    @Html.DropDownList("DistilleryId")
+    <input type="submit" value="Add new brand" />
+}
+<p>@Html.ActionLink("Show all categories", "Index")</p>
