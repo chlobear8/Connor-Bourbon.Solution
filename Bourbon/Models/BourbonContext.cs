@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace Bourbon.Models;
+namespace ConnorBourbon.Models;
 
 public class BourbonContext : DbContext
 {
