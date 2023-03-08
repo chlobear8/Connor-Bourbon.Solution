@@ -2,7 +2,8 @@
   Layout = "_Layout";
 }
 
-@using Bourbon.Models;
+@using ConnorBourbon.Models;
+@model List<ConnorBourbon.Models.Bourbon>;
 
 <h1>Bourbon</h1>
 
@@ -10,8 +11,14 @@
 {
   <h3>No bourbon added yet!</h3>
 }
-
-@foreach (Bourbon bourbon in Model)
+else
 {
-  <li>@bourbon.Name</li>
+  <ul>
+    @foreach (Bourbon bourbon in Model)
+    {
+      <li>@Html.ActionLink($"{bourbon.Name}", "Details", new { id = bourbon.BourbonId }) | @bourbon.Brand.Name</li>
+    }
+  </ul>
 }
+
+<p>@Html.ActionLink("Add new bourbon", "Create")</p>
