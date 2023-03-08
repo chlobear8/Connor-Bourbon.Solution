@@ -1,4 +1,4 @@
-namespace Bourbon.Models;
+namespace ConnorBourbon.Models;
 
 public class Bourbon
 {
