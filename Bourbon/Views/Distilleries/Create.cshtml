@@ -1,0 +1,14 @@
+@{
+    Layout = "_Layout";
+}
+
+@model ConnorBourbon.Models.Distillery
+
+<h4>Add a new Distillery</h4>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+
+}
+<p>@Html.ActionLink("Show all categories", "Index")</p>
