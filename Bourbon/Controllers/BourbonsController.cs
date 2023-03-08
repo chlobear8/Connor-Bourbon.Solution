@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using ConnorBourbon.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+
+using ConnorBourbon.Models;
 
 namespace ConnorBourbon.Controllers
 {
@@ -33,6 +34,10 @@ namespace ConnorBourbon.Controllers
     [HttpPost]
     public ActionResult Create(Bourbon bourbon)
     {
+      if (bourbon.BrandId == 0)
+      {
+        return RedirectToAction("Create");
+      }
       _db.Bourbons.Add(bourbon);
       _db.SaveChanges();
       return RedirectToAction("Index");
