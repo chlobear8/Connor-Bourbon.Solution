@@ -1,0 +1,29 @@
+@{
+    Layout = "_Layout";
+}
+
+@model ConnorBourbon.Models.Distillery
+@using ConnorBourbon.Models
+
+<h2>Distillery Details</h2>
+<hr/>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if (@Model.Brands.Count == 0)
+{
+  <h3>No brands have been added to this distillery yet!</h3>
+}
+else
+{
+  <h3>Brands</h3>
+  <ul>
+    @foreach (Brand brand in Model.Brands)
+    {
+      <li>@Html.ActionLink($"{brand.Name}", "Details", "Brands", new {id = brand.BrandId})</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit Distillery", "Edit", new { id = Model.DistilleryId})</p>
+<p>@Html.ActionLink("Delete Distillery", "Delete", new { id = Model.DistilleryId})</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>
