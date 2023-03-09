@@ -57,6 +57,8 @@ namespace ConnorBourbon.Controllers
      public ActionResult Delete(int id)
      {
       Juice thisJuice = _db.JuiceTypes.FirstOrDefault(juice => juice.JuiceId == id);
+      ViewBag.field = "Name";
+      ViewBag.name = thisJuice.Name;
       return View(thisJuice);
      }
      [HttpPost, ActionName("Delete")]
