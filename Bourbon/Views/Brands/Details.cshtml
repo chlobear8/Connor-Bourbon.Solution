@@ -24,6 +24,7 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Edit Brand", "Edit", new { id = Model.BrandId})</p>
-<p>@Html.ActionLink("Delete Brand", "Delete", new { id = Model.BrandId})</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add Bourbon", "Create", "Bourbons", null, new { @class="button" })</p>
+<p>@Html.ActionLink("Edit Brand", "Edit", null, new { id = Model.BrandId}, new{@class="button" })</p>
+<p>@Html.ActionLink("Delete Brand", "Delete", null, new { id = Model.BrandId}, new{@class="button" })</p>
+<p>@Html.ActionLink("Back to list", "Index", null, null, new { @class="button" })</p>
