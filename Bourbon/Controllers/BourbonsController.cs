@@ -12,6 +12,7 @@ namespace ConnorBourbon.Controllers
   {
     private readonly BourbonContext _db;
 
+
     public BourbonsController(BourbonContext db)
     {
       _db = db;
@@ -55,6 +56,7 @@ namespace ConnorBourbon.Controllers
     {
       Bourbon thisBourbon = _db.Bourbons.FirstOrDefault(bourbon => bourbon.BourbonId == id);
       ViewBag.BrandId = new SelectList(_db.Brands, "BrandId", "Name");
+      ViewBag.JuiceId = new SelectList(_db.JuiceTypes, "JuiceId", "Name");
       return View(thisBourbon);
     }
 
@@ -69,6 +71,8 @@ namespace ConnorBourbon.Controllers
     public ActionResult Delete(int id)
     {
       Bourbon thisBourbon = _db.Bourbons.FirstOrDefault(bourbon => bourbon.BourbonId == id);
+      ViewBag.field = "Name";
+      ViewBag.name = thisBourbon.Name;
       return View(thisBourbon);
     }
 
