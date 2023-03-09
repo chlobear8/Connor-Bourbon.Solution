@@ -23,9 +23,11 @@ namespace ConnorBourbon.Controllers
       return View(model);
     }
 
-    public ActionResult Create()
+    public ActionResult Create(int id)
     {
-      return View();
+      Brand thisBrand = _db.Brands.FirstOrDefault(brand => brand.BrandId == id);
+      ViewBag.DistilleryId = new SelectList(_db.Distilleries, "DistilleryId", "Name");
+      return View(thisBrand);
     }
 
     [HttpPost]
@@ -61,6 +63,8 @@ namespace ConnorBourbon.Controllers
      public ActionResult Delete(int id)
      {
       Brand thisBrand = _db.Brands.FirstOrDefault(brand => brand.BrandId == id);
+      ViewBag.field = "Name";
+      ViewBag.name = thisBrand.Name;
       return View(thisBrand);
      }
      [HttpPost, ActionName("Delete")]
