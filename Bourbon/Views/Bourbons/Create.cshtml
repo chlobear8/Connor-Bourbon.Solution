@@ -11,12 +11,15 @@
 @using (@Html.BeginForm())
 {
   @Html.LabelFor(model => model.Name)
-  @Html.TextBoxFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name, new {required="required"})
 
   @Html.LabelFor(model => model.Brand)
   @Html.DropDownList("BrandId")
+  
+  @Html.LabelFor(model => model.Juice)
+  @Html.DropDownList("JuiceId")
 
   <input type="submit" value="Add a new bottle" class="btn btn-primary" />
 }
 
-<p>@Html.ActionLink("Show all bourbon", "Index")</p>
+<p>@Html.ActionLink("Show all bourbon", "Index", null, null, new { @class= "button" })</p>
