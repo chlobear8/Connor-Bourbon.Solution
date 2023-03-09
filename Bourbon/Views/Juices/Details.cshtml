@@ -10,6 +10,6 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
 <p>@Html.DisplayNameFor(model => model.Rules): @Html.DisplayFor(model => model.Rules)</p>
 
-<p>@Html.ActionLink("Edit Juice", "Edit", new { id = Model.JuiceId})</p>
-<p>@Html.ActionLink("Delete Juice", "Delete", new { id = Model.JuiceId})</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit Juice", "Edit", null, new { id = Model.JuiceId}, new{@class="button" })</p>
+<p>@Html.ActionLink("Delete Juice", "Delete", null, new { id = Model.JuiceId}, new{@class="button" })</p>
+<p>@Html.ActionLink("Back to list", "Index", null, new { @class ="button" })</p>
