@@ -24,6 +24,7 @@ else
   </ul>
 }
 
-<p>@Html.ActionLink("Edit Distillery", "Edit", new { id = Model.DistilleryId})</p>
-<p>@Html.ActionLink("Delete Distillery", "Delete", new { id = Model.DistilleryId})</p>
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Add Brand", "Create", "Brands", null, new { @class ="button" })</p>
+<p>@Html.ActionLink("Edit Distillery", "Edit", null, new { id = Model.DistilleryId }, new { @class ="button" })</p>
+<p>@Html.ActionLink("Delete Distillery", "Delete", null, new { id = Model.DistilleryId}, new { @class="button" })</p>
+<p>@Html.ActionLink("Back to list", "Index", null, null, new { @class="button" })</p>
