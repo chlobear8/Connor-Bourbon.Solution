@@ -9,6 +9,6 @@
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
 <h3>@Html.DisplayNameFor(model => model.Brand): @Html.DisplayFor(model => model.Brand.Name)<h3>
 
-<p>@Html.ActionLink("Edit Item", "Edit", new { id = Model.BourbonId })</p>
-<p>@Html.ActionLink("Delete Item", "Delete", new { id = Model.BourbonId })</p>
+<p>@Html.ActionLink("Edit Item", "Edit", null, new { id = Model.BourbonId}, new {@class="button"})</p>
+<p>@Html.ActionLink("Delete Item", "Delete", null, new { id = Model.BourbonId}, new {@class="button"})</p>
 <p>@Html.ActionLink("Back to list", "Index")</p>
