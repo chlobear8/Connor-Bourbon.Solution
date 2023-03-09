@@ -61,6 +61,8 @@ namespace ConnorBourbon.Controllers
      public ActionResult Delete(int id)
      {
       Distillery thisDistillery = _db.Distilleries.FirstOrDefault(distillery => distillery.DistilleryId == id);
+      ViewBag.field = "Name";
+      ViewBag.name = thisDistillery.Name;
       return View(thisDistillery);
      }
      [HttpPost, ActionName("Delete")]
