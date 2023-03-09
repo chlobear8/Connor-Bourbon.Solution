@@ -84,3 +84,33 @@ div#footer {
 #name {
   width: 200px;
 }
+
+.btn-primary {
+  background-color: #e58406;
+  border: none;
+}
+
+.button {
+  display: inline-block;
+  background-color: rgb(8, 63, 25);
+  border-radius: 4px;
+  padding: 6px;
+  margin-top: 4px;
+  color: rgb(8, 6, 6);
+  text-decoration: none;
+  cursor: pointer;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.button:hover {
+  text-decoration: none;
+  color: inherit;
+  background-color: #e58406;
+}
+
+#bourbon-pic {
+  display: flex;
+  object-fit: contain;
+  width: 600px;
+  float: right;
+}
