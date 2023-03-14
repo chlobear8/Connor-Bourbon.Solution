@@ -37,41 +37,42 @@ namespace ConnorBourbon.Controllers
     }
 
     public ActionResult Details(int id)
-     {
+    {
       Distillery thisDistillery = _db.Distilleries
-                                .Include(distillery => distillery.Brands)
-                                .FirstOrDefault(distillery => distillery.DistilleryId == id);
+                                      .Include(distillery => distillery.Brands)
+                                      .FirstOrDefault(distillery => distillery.DistilleryId == id);
       return View(thisDistillery);
-     }
+    }
 
-     public ActionResult Edit(int id)
-     {
+    public ActionResult Edit(int id)
+    {
       Distillery thisDistillery = _db.Distilleries.FirstOrDefault(distillery => distillery.DistilleryId == id);
       return View(thisDistillery);
-     }
+    }
 
-     [HttpPost]
-     public ActionResult Edit(Distillery distillery)
-     {
+    [HttpPost]
+    public ActionResult Edit(Distillery distillery)
+    {
       _db.Distilleries.Update(distillery);
       _db.SaveChanges();
       return RedirectToAction("Index");
-     }
+    }
 
-     public ActionResult Delete(int id)
-     {
+    public ActionResult Delete(int id)
+    {
       Distillery thisDistillery = _db.Distilleries.FirstOrDefault(distillery => distillery.DistilleryId == id);
       ViewBag.field = "Name";
       ViewBag.name = thisDistillery.Name;
       return View(thisDistillery);
-     }
-     [HttpPost, ActionName("Delete")]
-     public ActionResult DeleteConfirmed(int id)
-     {
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
       Distillery thisDistillery = _db.Distilleries.FirstOrDefault(distillery => distillery.DistilleryId == id);
       _db.Distilleries.Remove(thisDistillery);
       _db.SaveChanges();
       return RedirectToAction("Index");
-     }
+    }
   }
 }

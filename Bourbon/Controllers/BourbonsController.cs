@@ -56,7 +56,6 @@ namespace ConnorBourbon.Controllers
     {
       Bourbon thisBourbon = _db.Bourbons.FirstOrDefault(bourbon => bourbon.BourbonId == id);
       ViewBag.BrandId = new SelectList(_db.Brands, "BrandId", "Name");
-      ViewBag.JuiceId = new SelectList(_db.JuiceTypes, "JuiceId", "Name");
       return View(thisBourbon);
     }
 

@@ -39,41 +39,42 @@ namespace ConnorBourbon.Controllers
     }
 
     public ActionResult Details(int id)
-     {
+    {
       Brand thisBrand = _db.Brands
-                                .Include(brand => brand.Bourbons)
-                                .FirstOrDefault(brand => brand.BrandId == id);
+                            .Include(brand => brand.Bourbons)
+                            .FirstOrDefault(brand => brand.BrandId == id);
       return View(thisBrand);
-     }
+    }
 
-     public ActionResult Edit(int id)
-     {
+    public ActionResult Edit(int id)
+    {
       Brand thisBrand = _db.Brands.FirstOrDefault(brand => brand.BrandId == id);
       return View(thisBrand);
-     }
+    }
 
-     [HttpPost]
-     public ActionResult Edit(Brand brand)
-     {
+    [HttpPost]
+    public ActionResult Edit(Brand brand)
+    {
       _db.Brands.Update(brand);
       _db.SaveChanges();
       return RedirectToAction("Index");
-     }
+    }
 
-     public ActionResult Delete(int id)
-     {
+    public ActionResult Delete(int id)
+    {
       Brand thisBrand = _db.Brands.FirstOrDefault(brand => brand.BrandId == id);
       ViewBag.field = "Name";
       ViewBag.name = thisBrand.Name;
       return View(thisBrand);
-     }
-     [HttpPost, ActionName("Delete")]
-     public ActionResult DeleteConfirmed(int id)
-     {
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
       Brand thisBrand = _db.Brands.FirstOrDefault(brand => brand.BrandId == id);
       _db.Brands.Remove(thisBrand);
       _db.SaveChanges();
       return RedirectToAction("Index");
-     }
+    }
   }
 }

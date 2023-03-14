@@ -6,6 +6,4 @@ public class Bourbon
     public string Name { get; set; }
     public Brand Brand { get; set; }
     public int BrandId { get; set; }
-    public Juice Juice { get; set; }
-    public int JuiceId { get; set; }
 }
