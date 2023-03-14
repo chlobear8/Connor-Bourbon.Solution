@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model ConnorBourbon.Models.Bourbon
+
+<p><strong>NOTE:</strong> Add a bourbon brand before you add anything else!</p>
+<p>Go to @Html.ActionLink("this page", "Create", "Brands") to add a brand.</p>
+
+<h4>Add new bourbon</h4>
+@using (@Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name, new {required="required"})
+
+  @Html.LabelFor(model => model.Brand)
+  @Html.DropDownList("BrandId")
+
+  <input type="submit" value="Add a new bottle" class="btn btn-primary" />
+}
+
+<p>@Html.ActionLink("Show all bourbon", "Index", null, null, new { @class= "button" })</p>
