@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Bourbon.Migrations
+namespace ConnorBourbon.Migrations
 {
     [DbContext(typeof(BourbonContext))]
     [Migration("20230314025224_Initial")]
