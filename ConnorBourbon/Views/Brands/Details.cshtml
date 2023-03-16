@@ -4,6 +4,7 @@
 
 @model ConnorBourbon.Models.Brand
 @using ConnorBourbon.Models
+@using System.Collections.Generic
 
 <h2>Brand Details</h2>
 <hr/>
@@ -15,11 +16,25 @@
 }
 else
 {
-  <h3>Bourbons</h3>
+  <h3>Bourbons from this brand:</h3>
   <ul>
     @foreach (Bourbon bourbon in Model.Bourbons)
     {
-      <li>@Html.ActionLink($"{bourbon.Name}", "Details", "Bourbons", new {id = bourbon.BourbonId})</li>
+      string tags = "";
+      @if(bourbon.JoinEntities.Count == 0)
+      {
+        tags = "This bottle does not have any tags.";
+      }
+      else
+      {
+        List<string> tagList = new List<string>();
+        @foreach(BourbonTag join in bourbon.JoinEntities)
+        {
+          tagList.Add(join.Tag.Title);
+        }
+        tags = String.Join(", ", tagList);
+      }
+      <li>@Html.ActionLink($"{bourbon.Name}", "Details", "Bourbons", new {id = bourbon.BourbonId}) | Tags: @tags</li>
     }
   </ul>
 }

@@ -25,7 +25,7 @@ namespace ConnorBourbon.Controllers
     {
       Tag thisTag = _db.Tags
           .Include(tag => tag.JoinEntities)
-          .ThenInclude(join => join.Item)
+          .ThenInclude(join => join.Bourbon)
           .FirstOrDefault(tag => tag.TagId == id);
       return View(thisTag);
     }

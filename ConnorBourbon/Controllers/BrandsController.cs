@@ -42,6 +42,8 @@ namespace ConnorBourbon.Controllers
     {
       Brand thisBrand = _db.Brands
                             .Include(brand => brand.Bourbons)
+                            .ThenInclude(bourbon => bourbon.JoinEntities)
+                            .ThenInclude(join => join.Tag)
                             .FirstOrDefault(brand => brand.BrandId == id);
       return View(thisBrand);
     }
