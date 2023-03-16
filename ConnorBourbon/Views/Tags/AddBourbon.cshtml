@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model ConnorBourbon.Models.Tag
+
+<h2>Add a bottle</h2>
+
+<h4>Add a bottle to this tag: @Html.DisplayFor(model => model.Title)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.TagId)
+
+    @Html.Label("Select bottle")
+    @Html.DropDownList("BourbonId")
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index", null, null, new { @class= "button" })</p>

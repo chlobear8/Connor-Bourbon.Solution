@@ -54,14 +54,28 @@ namespace ConnorBourbon.Controllers
     public ActionResult AddBourbon(Tag tag, int bourbonId)
     {
       #nullable enable
-      BourbonTag? joinEntity = _db.BourbonTags.FirstOrDefault(join => (join.BourbonId == bourbonId && join.TagId == tag.TagId));
+      BourbonTag? joinEntity = _db.BourbonTag.FirstOrDefault(join => (join.BourbonId == bourbonId && join.TagId == tag.TagId));
       #nullable disable
       if (joinEntity == null && bourbonId != 0)
       {
-        _db.BourbonTags.Add(new BourbonTag() { BourbonId = bourbonId, TagId = tag.TagId });
+        _db.BourbonTag.Add(new BourbonTag() { BourbonId = bourbonId, TagId = tag.TagId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = tag.TagId });
+    }
+
+    public ActionResult Edit(int id)
+    {
+      Tag thisTag = _db.Tags.FirstOrDefault(tags => tags.TagId == id);
+      return View(thisTag);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Tag tag)
+    {
+      _db.Tags.Update(tag);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
   }
 }

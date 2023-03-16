@@ -85,5 +85,26 @@ namespace ConnorBourbon.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddTag(int id)
+    {
+      Bourbon thisBourbon = _db.Bourbons.FirstOrDefault(bourbons => bourbons.BourbonId == id);
+      ViewBag.TagId = new SelectList(_db.Tags, "TagId", "Title");
+      return View(thisBourbon);
+    }
+
+    [HttpPost]
+    public ActionResult AddTag(Bourbon bourbon, int tagId)
+    {
+      #nullable enable
+      BourbonTag? joinEntity = _db.BourbonTag.FirstOrDefault(join => (join.TagId == tagId && join.BourbonId == bourbon.BourbonId));
+      #nullable disable
+      if (joinEntity == null && tagId != 0)
+      {
+        _db.BourbonTag.Add(new BourbonTag() { TagId = tagId, BourbonId = bourbon.BourbonId });
+        _db.SaveChanges();
+      }
+      return RedirectToAction("Details", new { id = bourbon.BourbonId });
+    }  
   }
 }
