@@ -2,12 +2,28 @@
   Layout = "_Layout";
 }
 
+@using ConnorBourbon.Models
 @model ConnorBourbon.Models.Bourbon
 
 <h2>Bourbon Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
 <h3>@Html.DisplayNameFor(model => model.Brand): @Html.DisplayFor(model => model.Brand.Name)<h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This bottle does not have any tags yet!</p>
+}
+else
+{
+  <h4>This bottle has the following tags:</h4>
+  <ul>
+    @foreach(BourbonTag join in Model.JoinEntities)
+    {
+      <li>Tag: @join.Tag.Title</li>
+    }
+  </ul>
+}
 
 <p>@Html.ActionLink("Edit Item", "Edit", null, new { id = Model.BourbonId}, new {@class="button"})</p>
 <p>@Html.ActionLink("Delete Item", "Delete", null, new { id = Model.BourbonId}, new {@class="button"})</p>
