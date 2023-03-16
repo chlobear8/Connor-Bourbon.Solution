@@ -16,6 +16,6 @@
   <li>@Html.ActionLink($"{tag.Title}", "Details", new { id = tag.TagId })</li>
 }
 
-<p>@Html.ActionLink("Add new tag", "Create")</p>
+<p>@Html.ActionLink("Add new tag", "Create", null, null, new { @class= "button" })</p>
 
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+<p>@Html.ActionLink("Home", "Index", "Home", null, new { @class= "button" })</p>
