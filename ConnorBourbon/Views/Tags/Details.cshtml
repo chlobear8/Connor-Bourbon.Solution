@@ -20,10 +20,18 @@ else
   @foreach(BourbonTag join in Model.JoinEntities)
   {
     <li>@join.Bourbon.Name</li>
+    @using (Html.BeginForm("DeleteJoin", "Tags"))
+    {
+      @Html.Hidden("joinId", @join.BourbonTagId)
+      <input type="submit" value="Delete"/>
+    }
   }
   </ul>
 }
 
+
+
 <p>@Html.ActionLink("Edit Tag", "Edit", null, null, new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Delete Tag", "Delete", null, null, new { id = Model.TagId })</p>
 <p>@Html.ActionLink("Add a bottle", "AddBourbon", null, null, new { id = Model.TagId })</p>
 <p>@Html.ActionLink("Back to list", "Index", null, null, new { @class= "button" })</p>

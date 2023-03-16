@@ -81,6 +81,8 @@ namespace ConnorBourbon.Controllers
     public ActionResult Delete(int id)
     {
       Tag thisTag = _db.Tags.FirstOrDefault(tags => tags.TagId == id);
+      ViewBag.field = "Name";
+      ViewBag.name = thisTag.Title;
       return View(thisTag);
     }
 
@@ -89,6 +91,15 @@ namespace ConnorBourbon.Controllers
     {
       Tag thisTag = _db.Tags.FirstOrDefault(tags => tags.TagId == id);
       _db.Tags.Remove(thisTag);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      BourbonTag joinEntry = _db.BourbonTags.FirstOrDefault(entry => entry.BourbonTagId == joinId);
+      _db.BourbonTags.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

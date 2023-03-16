@@ -106,5 +106,14 @@ namespace ConnorBourbon.Controllers
       }
       return RedirectToAction("Details", new { id = bourbon.BourbonId });
     }  
+
+    [HttpPost]
+    public ActionResult DeleteJoin(int joinId)
+    {
+      BourbonTag joinEntry = _db.BourbonTags.FirstOrDefault(entry => entry.BourbonTagId == joinId);
+      _db.BourbonTags.Remove(joinEntry);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
