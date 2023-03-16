@@ -1,9 +1,13 @@
-namespace ConnorBourbon.Models;
+using System.Collections.Generic;
 
-public class Bourbon
+namespace ConnorBourbon.Models
 {
+  public class Bourbon
+  {
     public int BourbonId { get; set; }
     public string Name { get; set; }
     public Brand Brand { get; set; }
     public int BrandId { get; set; }
+    public List<BourbonTag> JoinEntities { get; }
+  }
 }
