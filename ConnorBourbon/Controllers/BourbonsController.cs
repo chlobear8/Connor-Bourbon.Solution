@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-
 using ConnorBourbon.Models;
 
 namespace ConnorBourbon.Controllers
@@ -110,8 +109,8 @@ namespace ConnorBourbon.Controllers
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
-      BourbonTag joinEntry = _db.BourbonTags.FirstOrDefault(entry => entry.BourbonTagId == joinId);
-      _db.BourbonTags.Remove(joinEntry);
+      BourbonTag joinEntry = _db.BourbonTag.FirstOrDefault(entry => entry.BourbonTagId == joinId);
+      _db.BourbonTag.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

@@ -31,7 +31,7 @@ else
 
 
 
-<p>@Html.ActionLink("Edit Tag", "Edit", null, null, new { id = Model.TagId })</p>
-<p>@Html.ActionLink("Delete Tag", "Delete", null, null, new { id = Model.TagId })</p>
-<p>@Html.ActionLink("Add a bottle", "AddBourbon", null, null, new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Edit Tag", "Edit", new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Delete Tag", "Delete", new { id = Model.TagId })</p>
+<p>@Html.ActionLink("Add a bottle", "AddBourbon", new { id = Model.TagId })</p>
 <p>@Html.ActionLink("Back to list", "Index", null, null, new { @class= "button" })</p>
