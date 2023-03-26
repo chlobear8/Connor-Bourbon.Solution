@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Indentity.EntityFrameworkCore;
 
 namespace ConnorBourbon.Models
 {
-  public class BourbonContext : DbContext
+  public class BourbonContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Bourbon> Bourbons { get; set; }
     public DbSet<Brand> Brands { get; set; }
