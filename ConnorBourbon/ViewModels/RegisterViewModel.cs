@@ -5,9 +5,9 @@ namespace ConnorBourbon.ViewModels
   public class RegisterViewModel
   {
     [Required]
-    [UserName]
-    [Display(Name = "User Name")]
-    public string UserName { get; set; }
+    [EmailAddress]
+    [Display(Name = "Email Address")]
+    public string Email { get; set; }
 
     [Required]
     [DataType(DataType.Password)]

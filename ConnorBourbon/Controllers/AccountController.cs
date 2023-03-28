@@ -38,7 +38,7 @@ namespace ConnorBourbon.Controllers
       }
       else
       {
-        ApplicationUser user = new ApplicationUser { UserName = model.UserName };
+        ApplicationUser user = new ApplicationUser { UserName = model.Email };
         IdentityResult result = await _userManager.CreateAsync(user, model.Password);
         if (result.Succeeded)
         {
