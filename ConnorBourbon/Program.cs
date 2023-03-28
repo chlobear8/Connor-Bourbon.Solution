@@ -17,7 +17,7 @@ builder.Services.AddDbContext<BourbonContext>(
                 );
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ToDoListContext>()
+                .AddEntityFrameworkStores<BourbonContext>()
                 .AddDefaultTokenProviders();                
 
 WebApplication app = builder.Build();

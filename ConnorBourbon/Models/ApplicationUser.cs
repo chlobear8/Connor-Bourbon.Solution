@@ -1,9 +1,9 @@
-using Microsoft.AspNetCore.Indentity;
+using Microsoft.AspNetCore.Identity;
 
 namespace ConnorBourbon.Models
 {
-  public class ApplicationUser : IndentityUser
+  public class ApplicationUser : IdentityUser
   {
-    
+
   }
 }
