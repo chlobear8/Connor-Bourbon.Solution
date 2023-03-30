@@ -42,15 +42,22 @@ namespace ConnorBourbon.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(Bourbon bourbon)
+    public async Task<ActionResult> Create(Bourbon bourbon, int BrandId)
     {
-      if (bourbon.BrandId == 0)
+      if (!ModelState.IsValid)
       {
-        return RedirectToAction("Create");
+        ViewBag.BrandId = new SelectList(_db.Brands, "BrandId", "Name");
+        return View(bourbon);
       }
-      _db.Bourbons.Add(bourbon);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
+      else
+      {
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        bourbon.User = currentUser;
+        _db.Bourbons.Add(bourbon);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int id)
