@@ -2,10 +2,49 @@
   Layout = "_Layout";
 }
 
+@using ConnorBourbon.Models
+
 <h1>Welcome Connor!</h1>
-<p>@Html.ActionLink("Add new bourbon", "Create", "Bourbons", null, new { @class="button" })</p>
-<p>@Html.ActionLink("Add new brand", "Create", "Brands", null, new { @class="button" })</p>
+
+<hr>
+
+<h4>Distilleries</h4>
+@if (Model["distilleries"].Length == 0)
+{
+  <p>No distilleries have been added yet!</p>
+} 
+<ul>
+  @foreach (Distillery dist in Model["distilleries"])
+  {
+    <li>@Html.ActionLink(@dist.Name, "Details", "Distilleries", new { id = @dist.DistilleryId})</li>
+  }
+</ul>
+
+@if (User.Identity.IsAuthenticated)
+{
+  <h4>Bottles for @User.Identity.Name</h4>
+  @if (Model["bourbons"].Length == 0)
+  {
+    <p>No bottles have been added yet!</p>
+  } 
+  <ul>
+    @foreach (Bourbon bourbon in Model["bourbons"])
+    {
+      <li>@Html.ActionLink(@bourbon.Description, "Details", "Bourbons", new { id = @bourbon.BourbonId})</li>
+    }
+  </ul>
+}
+else
+{
+  <h4>Bottles</h4>
+  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your bottles.</p>
+}
+
+<hr>
+
+<p>@Html.ActionLink("Manage Bottles", "Index", "Bourbons", null, new { @class="button" })</p>
+<p>@Html.ActionLink("Manage Brands", "Index", "Brands", null, new { @class="button" })</p>
 <p>@Html.ActionLink("Add new distillery", "Create", "Distilleries", null, new { @class="button" })</p>
 <p>@Html.ActionLink("See all Distilleries", "Index", "Distilleries", null, new { @class="button" })</p>
-<p>@Html.ActionLink("See all tags", "Index", "Tags", null, new { @class="button" })</p>
+<p>@Html.ActionLink("Manage tags", "Index", "Tags", null, new { @class="button" })</p>
 <p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>

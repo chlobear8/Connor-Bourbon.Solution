@@ -22,9 +22,9 @@ public class HomeController : Controller
   [HttpGet("/")]
   public async Task<ActionResult> Index()
   {
-    Brands[] bran = _db.Brands.ToArray();
+    Distillery[] dist = _db.Distilleries.ToArray();
     Dictionary<string,object[]> model = new Dictionary<string, object[]>();
-    model.Add("brands", bran);
+    model.Add("distilleries", dist);
     string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
     ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
     if (currentUser != null)
