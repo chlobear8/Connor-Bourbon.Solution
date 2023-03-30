@@ -19,6 +19,7 @@ namespace ConnorBourbon.Controllers
       _db = db;
     }
 
+    [AllowAnonymous]
     public ActionResult Index()
     {
       List<Bourbon> model = _db.Bourbons

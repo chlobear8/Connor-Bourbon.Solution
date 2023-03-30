@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ConnorBourbon.Models
 {
@@ -9,5 +10,6 @@ namespace ConnorBourbon.Models
     public Brand Brand { get; set; }
     public int BrandId { get; set; }
     public List<BourbonTag> JoinEntities { get; }
+    public ApplicationUser User { get; set; }
   }
 }
