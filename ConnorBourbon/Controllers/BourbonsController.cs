@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ConnorBourbon.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
+using System.Security.Claims;
 
 namespace ConnorBourbon.Controllers
 {
@@ -12,20 +15,24 @@ namespace ConnorBourbon.Controllers
   public class BourbonsController : Controller
   {
     private readonly BourbonContext _db;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-
-    public BourbonsController(BourbonContext db)
+    public BourbonsController(UserManager<ApplicationUser> _userManager, BourbonContext db)
     {
+      _userManager = userManager;
       _db = db;
     }
 
     [AllowAnonymous]
-    public ActionResult Index()
+    public async <ActionResult> Index()
     {
-      List<Bourbon> model = _db.Bourbons
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      List<Bourbon> userBourbons = _db.Bourbons
+                                .Where(entry => entry.User.Id == currentUser.Id)
                                 .Include(bourbon => bourbon.Brand)
                                 .ToList();
-      return View(model);
+      return View(userBourbons);
     }
 
     public ActionResult Create()
