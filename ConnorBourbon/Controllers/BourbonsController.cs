@@ -4,9 +4,11 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ConnorBourbon.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ConnorBourbon.Controllers
 {
+  [Authorize]
   public class BourbonsController : Controller
   {
     private readonly BourbonContext _db;
