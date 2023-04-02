@@ -13,6 +13,9 @@
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name, new {required="required"})
 
+  @Html.LabelFor(model => model.Quantity)
+  @Html.TextBoxFor(model => model.Quantity, new {required="required"})
+
   @Html.LabelFor(model => model.Brand)
   @Html.DropDownList("BrandId")
 

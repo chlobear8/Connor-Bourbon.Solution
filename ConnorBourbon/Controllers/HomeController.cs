@@ -10,10 +10,10 @@ namespace ConnorBourbon.Controllers;
 
 public class HomeController : Controller
 {
-  private readonly ConnorBourbon _db;
+  private readonly BourbonContext _db;
   private readonly UserManager<ApplicationUser> _userManager;
 
-  public HomeController(UserManager<ApplicationUser> userManager, ToDoListContext db)
+  public HomeController(UserManager<ApplicationUser> userManager, BourbonContext db)
   {
     _userManager = userManager;
     _db = db;

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ConnorBourbon.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
 using System.Security.Claims;
@@ -17,14 +18,14 @@ namespace ConnorBourbon.Controllers
     private readonly BourbonContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public BourbonsController(UserManager<ApplicationUser> _userManager, BourbonContext db)
+    public BourbonsController(UserManager<ApplicationUser> userManager, BourbonContext db)
     {
       _userManager = userManager;
       _db = db;
     }
 
     [AllowAnonymous]
-    public async <ActionResult> Index()
+    public async Task<ActionResult> Index()
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);

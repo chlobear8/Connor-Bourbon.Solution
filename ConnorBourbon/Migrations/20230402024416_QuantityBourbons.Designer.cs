@@ -3,6 +3,7 @@ using System;
 using ConnorBourbon.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConnorBourbon.Migrations
 {
     [DbContext(typeof(BourbonContext))]
-    partial class BourbonContextModelSnapshot : ModelSnapshot
+    [Migration("20230402024416_QuantityBourbons")]
+    partial class QuantityBourbons
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

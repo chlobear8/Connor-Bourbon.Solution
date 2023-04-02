@@ -19,7 +19,10 @@ namespace ConnorBourbon.Controllers
 
     public ActionResult Index()
     {
-      List<Distillery> model = _db.Distilleries.ToList();
+      List<Distillery> model = _db.Distilleries
+                          .OrderBy(distillery => distillery.Name)
+                          .ToList();
+
       return View(model);
     }
 

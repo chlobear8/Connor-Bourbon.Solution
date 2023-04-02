@@ -7,6 +7,7 @@ namespace ConnorBourbon.Models
   {
     public int BourbonId { get; set; }
     public string Name { get; set; }
+    public int Quantity { get; set; }
     public Brand Brand { get; set; }
     public int BrandId { get; set; }
     public List<BourbonTag> JoinEntities { get; }
